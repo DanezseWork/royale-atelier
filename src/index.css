@@ -1,3 +1,13 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "BostonAngel";
+  src: url("/fonts/boston-angel.woff2") format("woff2");
+  font-weight: 400; /* better than 'normal' */
+  font-style: normal;
+  font-display: swap; /* improves loading */
+}
 
+.font-boston {
+  font-family: "BostonAngel", sans-serif;
+}
