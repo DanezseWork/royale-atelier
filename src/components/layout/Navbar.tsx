@@ -3,8 +3,8 @@ export function Navbar() {
     <div className="sticky top-0 left-0 w-full z-50">
       {/* Pattern (background layer) */}
       <img
-        className="absolute -top-25 lg:-top-70 left-0 w-full pointer-events-none"
-        src="/images/hero-pattern.png"
+        className="absolute -top-25 lg:-top-60 left-0 w-full pointer-events-none scale-x-[-1]"
+        src="/images/hero-pattern.svg"
         alt="pattern"
       />
 

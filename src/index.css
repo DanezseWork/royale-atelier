@@ -11,3 +11,45 @@
 .font-boston {
   font-family: "BostonAngel", sans-serif;
 }
+
+@font-face {
+  font-family: "CitadelScript";
+  src: url("/fonts/citadel-script.woff2") format("woff2");
+  font-weight: 400; /* better than 'normal' */
+  font-style: normal;
+  font-display: swap; /* improves loading */
+}
+
+.font-citadel {
+  font-family: "CitadelScript", cursive;
+}
+
+@keyframes movePattern {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 600px 600px;
+  }
+}
+
+.animate-pattern {
+  background-repeat: repeat;
+  background-size: 600px auto;
+  animation: movePattern 30s linear infinite;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp 1.2s cubic-bezier(0.22,1,0.36,1) forwards;
+}
