@@ -6,7 +6,7 @@ export function Hero() {
     >
       <img
         src="/images/hero-title.svg"
-        className="lg:h-140 animate-fade-up"
+        className="lg:h-140 animate-fade-up fixed"
         alt="Hero title"
       />
       <img

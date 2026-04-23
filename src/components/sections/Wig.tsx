@@ -6,9 +6,9 @@ export function Wig() {
         <span>Styling</span>
       </div>
       <div className="flex gap-5">
-        <img className="" src="/images/wig-basic.svg" />
-        <img className="" src="/images/wig-structured.svg" />
-        <img className="" src="/images/wig-complex.svg" />
+        <img className="w-40" src="/images/wig-basic.svg" />
+        <img className="w-40" src="/images/wig-structured.svg" />
+        <img className="w-40" src="/images/wig-complex.svg" />
       </div>
     </section>
   );

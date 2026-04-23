@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Wig } from "./Wig";
+import { Costume } from "./Costume";
+import { Contact } from "./Contact";
 
 export function Services() {
   const [open, setOpen] = useState(false);
@@ -28,7 +30,7 @@ export function Services() {
       className={`relative ${open ? "h-full" : "h-[200vh]"}`}
     >
       <div
-        className="sticky top-0 flex flex-col justify-center overflow-hidden bg-repeat p-20 text-center animate-pattern"
+        className="sticky top-0 flex flex-col justify-center overflow-hidden bg-repeat text-center animate-pattern"
         style={{ backgroundImage: "url('/images/bg-pattern.svg')" }}
       >
         <h1 className="font-citadel text-[150px] text-white">Services</h1>
@@ -36,17 +38,21 @@ export function Services() {
         <div className="flex items-center justify-center gap-10">
           <img
             src="/images/service-wig.svg"
-            className="lg:h-100"
+            className="lg:h-80"
             alt="Wig service"
           />
           <img
             src="/images/service-costume.svg"
-            className="lg:h-100"
+            className="lg:h-80"
             alt="Costume service"
           />
         </div>
 
         <Wig />
+
+        <Costume />
+
+        <Contact />
 
         <Curtain open={open} />
       </div>
