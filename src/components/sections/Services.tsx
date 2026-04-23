@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Wig } from "./Wig";
 
 export function Services() {
   const [open, setOpen] = useState(false);
@@ -24,10 +25,10 @@ export function Services() {
   return (
     <section
       ref={sectionRef}
-      className={`relative ${open ? "h-screen" : "h-[200vh]"}`}
+      className={`relative ${open ? "h-full" : "h-[200vh]"}`}
     >
       <div
-        className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden bg-repeat p-20 text-center animate-pattern"
+        className="sticky top-0 flex flex-col justify-center overflow-hidden bg-repeat p-20 text-center animate-pattern"
         style={{ backgroundImage: "url('/images/bg-pattern.svg')" }}
       >
         <h1 className="font-citadel text-[150px] text-white">Services</h1>
@@ -44,6 +45,8 @@ export function Services() {
             alt="Costume service"
           />
         </div>
+
+        <Wig />
 
         <Curtain open={open} />
       </div>
