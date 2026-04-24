@@ -6,6 +6,7 @@ import { Contact } from "./Contact";
 export function Services() {
   const [open, setOpen] = useState(false);
   const sectionRef = useRef<HTMLElement | null>(null);
+  const [showContent, setShowContent] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,6 +25,16 @@ export function Services() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [open]);
 
+  useEffect(() => {
+    if (open) {
+      const timer = setTimeout(() => {
+        setShowContent(true);
+      }, 500); // match curtain duration
+
+      return () => clearTimeout(timer);
+    }
+  }, [open]);
+
   return (
     <section
       ref={sectionRef}
@@ -33,18 +44,30 @@ export function Services() {
         className="sticky top-0 flex flex-col justify-center overflow-hidden bg-repeat text-center animate-pattern"
         style={{ backgroundImage: "url('/images/bg-pattern.svg')" }}
       >
-        <h1 className="font-citadel text-[150px] text-white">Services</h1>
+        <h1
+          className={`font-citadel text-[150px] text-white pt-20 ${
+            showContent ? "animate-write" : "opacity-0"
+          }`}
+        >
+          Services
+        </h1>
 
-        <div className="flex items-center justify-center gap-10">
+        <div className="flex items-center justify-center gap-10 mt-10">
           <img
             src="/images/service-wig.svg"
-            className="lg:h-80"
-            alt="Wig service"
+            className={`lg:h-80 ${
+              showContent
+                ? "opacity-0 translate-y-10 animate-[fadeUp_0.8s_ease-out_0.2s_forwards]"
+                : "opacity-0"
+            }`}
           />
           <img
             src="/images/service-costume.svg"
-            className="lg:h-80"
-            alt="Costume service"
+            className={`lg:h-80 ${
+              showContent
+                ? "opacity-0 translate-y-10 animate-[fadeUp_0.8s_ease-out_0.4s_forwards]"
+                : "opacity-0"
+            }`}
           />
         </div>
 

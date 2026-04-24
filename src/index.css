@@ -81,3 +81,33 @@
 .animate-crumple {
   animation: crumpleIn 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
+
+@keyframes writeIn {
+  0% {
+    clip-path: inset(0 100% 0 0);
+    opacity: 0;
+    filter: blur(6px);
+    transform: translateY(10px) skewX(6deg);
+  }
+
+  60% {
+    opacity: 1;
+    filter: blur(0);
+  }
+
+  100% {
+    clip-path: inset(0 0 0 0);
+    transform: translateY(0) skewX(0deg);
+  }
+}
+
+.animate-write {
+  animation: writeIn 1.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
