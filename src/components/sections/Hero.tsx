@@ -4,10 +4,8 @@ export function Hero() {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    // force viewport to top immediately
     window.scrollTo(0, 0);
 
-    // lock page at top
     document.documentElement.style.overflow = "hidden";
     document.body.style.overflow = "hidden";
     document.body.style.position = "fixed";
@@ -28,7 +26,7 @@ export function Hero() {
       document.body.style.left = "";
       document.body.style.right = "";
       document.body.style.width = "";
-    }, 1300); // 150 delay + 1000 animation + small buffer
+    }, 1300);
 
     return () => {
       clearTimeout(startTimer);
@@ -46,21 +44,53 @@ export function Hero() {
 
   return (
     <section
-      className="relative flex h-screen items-center justify-center bg-cover bg-center"
+      className="relative flex h-screen items-center justify-center bg-cover bg-center px-6"
       style={{ backgroundImage: "url('/images/hero-bg.jpg')" }}
     >
+      {/* TITLE */}
       <img
         src="/images/hero-title.svg"
-        className="fixed lg:h-140 animate-fade-up"
         alt="Hero title"
+        className={`
+          animate-fade-up-soft delay-200
+
+          /* mobile */
+          h-32
+
+          /* tablet */
+          md:h-52
+
+          /* desktop */
+          lg:h-140
+
+          /* positioning */
+          relative md:fixed
+        `}
       />
 
+      {/* PATTERN */}
       <img
         src="/images/hero-pattern.svg"
-        className={`absolute left-0 w-full -bottom-20 lg:-bottom-70 z-20 transform-gpu transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-          loaded ? "translate-y-0 opacity-100" : "translate-y-[120%] opacity-0"
-        }`}
         alt=""
+        className={`
+          absolute left-0 w-full z-20 transform-gpu
+          transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)]
+
+          /* mobile */
+          -bottom-10
+
+          /* tablet */
+          md:-bottom-20
+
+          /* desktop */
+          lg:-bottom-70
+
+          ${
+            loaded
+              ? "translate-y-0 opacity-100"
+              : "translate-y-[120%] opacity-0"
+          }
+        `}
       />
     </section>
   );
