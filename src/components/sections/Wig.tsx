@@ -10,7 +10,7 @@ export function Wig() {
 
       const rect = sectionRef.current.getBoundingClientRect();
 
-      if (rect.top <= 150) {
+      if (rect.top <= 200) {
         setShow(true);
       }
     };

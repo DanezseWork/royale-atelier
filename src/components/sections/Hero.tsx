@@ -61,7 +61,7 @@ export function Hero() {
           md:h-52
 
           /* desktop */
-          lg:h-140
+          lg:h-120
 
           /* positioning */
           relative md:fixed

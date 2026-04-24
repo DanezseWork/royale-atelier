@@ -54,7 +54,7 @@ export function Services() {
           flex flex-col items-center text-center overflow-hidden bg-repeat animate-pattern
 
           /* mobile */
-          py-20 px-6 gap-10
+          gap-10
 
           /* desktop */
           lg:sticky lg:top-0 lg:justify-center
@@ -73,7 +73,7 @@ export function Services() {
             md:text-[90px]
 
             /* desktop */
-            lg:text-[150px] lg:pt-20
+            lg:text-[150px] pt-20
 
             ${showContent ? "animate-write" : "opacity-0"}
           `}
