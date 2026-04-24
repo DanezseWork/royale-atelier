@@ -106,7 +106,7 @@ export function Contact() {
             name="email"
             required
             placeholder="Email"
-            className={`bg-transparent text-white outline-none placeholder-white ${
+            className={`bg-transparent text-gray-600 outline-none placeholder-gray-600 ${
               show
                 ? "opacity-0 animate-fade-up-soft [animation-delay:0.6s]"
                 : "opacity-0"
@@ -117,7 +117,7 @@ export function Contact() {
             name="message"
             required
             placeholder="Message"
-            className={`h-24 resize-none bg-transparent text-white outline-none placeholder-white ${
+            className={`h-24 resize-none bg-transparent text-gray-600 outline-none placeholder-gray-600 ${
               show
                 ? "opacity-0 animate-fade-up-soft [animation-delay:0.8s]"
                 : "opacity-0"
