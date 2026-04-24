@@ -10,7 +10,6 @@ export function Wig() {
 
       const rect = sectionRef.current.getBoundingClientRect();
 
-      // trigger when near top
       if (rect.top <= 150) {
         setShow(true);
       }
@@ -25,10 +24,34 @@ export function Wig() {
   return (
     <section
       ref={sectionRef}
-      className="flex w-full items-center justify-center gap-10 pt-40 overflow-hidden"
+      className={`
+        flex w-full items-center justify-center overflow-hidden
+
+        /* mobile */
+        flex-col gap-8 px-6 pt-20
+
+        /* tablet */
+        md:gap-10 md:pt-28
+
+        /* desktop */
+        lg:flex-row lg:gap-10 lg:pt-40
+      `}
     >
-      {/* TEXT (write animation) */}
-      <div className="flex flex-col text-end font-citadel text-[150px] text-white">
+      {/* TEXT */}
+      <div
+        className={`
+          flex flex-col font-citadel text-white
+
+          /* mobile */
+          text-center text-[60px]
+
+          /* tablet */
+          md:text-[90px]
+
+          /* desktop */
+          lg:text-end lg:text-[150px]
+        `}
+      >
         <span className={show ? "animate-write" : "opacity-0"}>Wig</span>
         <span
           className={
@@ -39,27 +62,53 @@ export function Wig() {
         </span>
       </div>
 
-      {/* IMAGES (natural stagger drop) */}
-      <div className="flex gap-5">
+      {/* IMAGES */}
+      <div
+        className={`
+          flex
+
+          /* mobile */
+          flex-wrap justify-center gap-4
+
+          /* tablet */
+          md:gap-6
+
+          /* desktop */
+          lg:flex-nowrap lg:gap-5
+        `}
+      >
         <img
           src="/images/wig-basic.svg"
-          className={`w-40 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-            show ? "translate-y-0 opacity-100" : "-translate-y-20 opacity-0"
-          }`}
+          className={`
+            transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]
+
+            /* sizes */
+            w-24 md:w-32 lg:w-40
+
+            ${show ? "translate-y-0 opacity-100" : "-translate-y-20 opacity-0"}
+          `}
         />
 
         <img
           src="/images/wig-structured.svg"
-          className={`w-40 transition-all duration-700 delay-150 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-            show ? "translate-y-0 opacity-100" : "-translate-y-20 opacity-0"
-          }`}
+          className={`
+            transition-all duration-700 delay-150 ease-[cubic-bezier(0.22,1,0.36,1)]
+
+            w-24 md:w-32 lg:w-40
+
+            ${show ? "translate-y-0 opacity-100" : "-translate-y-20 opacity-0"}
+          `}
         />
 
         <img
           src="/images/wig-complex.svg"
-          className={`w-40 transition-all duration-700 delay-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-            show ? "translate-y-0 opacity-100" : "-translate-y-20 opacity-0"
-          }`}
+          className={`
+            transition-all duration-700 delay-300 ease-[cubic-bezier(0.22,1,0.36,1)]
+
+            w-24 md:w-32 lg:w-40
+
+            ${show ? "translate-y-0 opacity-100" : "-translate-y-20 opacity-0"}
+          `}
         />
       </div>
     </section>
