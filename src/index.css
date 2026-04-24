@@ -51,5 +51,33 @@
 }
 
 .animate-fade-up {
-  animation: fadeUp 1.2s cubic-bezier(0.22,1,0.36,1) forwards;
+  animation: fadeUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes crumpleIn {
+  0% {
+    opacity: 0;
+    transform: scale(1.2) skew(8deg, 4deg) rotate(2deg);
+    filter: blur(8px);
+  }
+
+  40% {
+    opacity: 1;
+    transform: scale(0.95) skew(-6deg, -3deg) rotate(-1deg);
+    filter: blur(2px);
+  }
+
+  70% {
+    transform: scale(1.02) skew(3deg, 1deg) rotate(0.5deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) skew(0deg, 0deg) rotate(0deg);
+    filter: blur(0);
+  }
+}
+
+.animate-crumple {
+  animation: crumpleIn 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
