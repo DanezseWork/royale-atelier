@@ -2,11 +2,12 @@ import { useEffect, useRef, useState } from "react";
 import { Wig } from "./Wig";
 import { Costume } from "./Costume";
 import { Contact } from "./Contact";
+import { Curtain } from "../layout/Curtain";
 
 export function Services() {
   const [open, setOpen] = useState(false);
-  const sectionRef = useRef<HTMLElement | null>(null);
   const [showContent, setShowContent] = useState(false);
+  const sectionRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,7 +30,7 @@ export function Services() {
     if (open) {
       const timer = setTimeout(() => {
         setShowContent(true);
-      }, 500); // match curtain duration
+      }, 500);
 
       return () => clearTimeout(timer);
     }
@@ -38,83 +39,84 @@ export function Services() {
   return (
     <section
       ref={sectionRef}
-      className={`relative ${open ? "h-full" : "h-[200vh]"}`}
+      className={`
+        relative
+
+        /* mobile */
+        h-auto
+
+        /* desktop cinematic */
+        lg:${open ? "h-full" : "h-[200vh]"}
+      `}
     >
       <div
-        className="sticky top-0 flex flex-col justify-center overflow-hidden bg-repeat text-center animate-pattern"
+        className={`
+          flex flex-col items-center text-center overflow-hidden bg-repeat animate-pattern
+
+          /* mobile */
+          py-20 px-6 gap-10
+
+          /* desktop */
+          lg:sticky lg:top-0 lg:justify-center
+        `}
         style={{ backgroundImage: "url('/images/bg-pattern.svg')" }}
       >
+        {/* TITLE */}
         <h1
-          className={`font-citadel text-[150px] text-white pt-20 ${
-            showContent ? "animate-write" : "opacity-0"
-          }`}
+          className={`
+            font-citadel text-white
+
+            /* mobile */
+            text-[60px]
+
+            /* tablet */
+            md:text-[90px]
+
+            /* desktop */
+            lg:text-[150px] lg:pt-20
+
+            ${showContent ? "animate-write" : "opacity-0"}
+          `}
         >
           Services
         </h1>
 
-        <div className="flex items-center justify-center gap-10 mt-10">
+        {/* ICONS */}
+        <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10 mt-6 md:mt-10">
           <img
             src="/images/service-wig.svg"
-            className={`lg:h-80 ${
-              showContent
-                ? "opacity-0 translate-y-10 animate-[fadeUp_0.8s_ease-out_0.2s_forwards]"
-                : "opacity-0"
-            }`}
+            className={`
+              h-28 md:h-40 lg:h-80
+              ${
+                showContent
+                  ? "opacity-0 translate-y-10 animate-[fadeUp_0.6s_ease-out_0.2s_forwards]"
+                  : "opacity-0"
+              }
+            `}
           />
           <img
             src="/images/service-costume.svg"
-            className={`lg:h-80 ${
-              showContent
-                ? "opacity-0 translate-y-10 animate-[fadeUp_0.8s_ease-out_0.4s_forwards]"
-                : "opacity-0"
-            }`}
+            className={`
+              h-28 md:h-40 lg:h-80
+              ${
+                showContent
+                  ? "opacity-0 translate-y-10 animate-[fadeUp_0.6s_ease-out_0.4s_forwards]"
+                  : "opacity-0"
+              }
+            `}
           />
         </div>
 
+        {/* SECTIONS */}
         <Wig />
-
         <Costume />
-
         <Contact />
 
-        <Curtain open={open} />
+        {/* CURTAIN (desktop only) */}
+        <div className="hidden lg:block">
+          <Curtain open={open} />
+        </div>
       </div>
     </section>
-  );
-}
-
-function Curtain({ open }: { open: boolean }) {
-  return (
-    <div className="pointer-events-none absolute inset-0 z-20">
-      {/* LEFT */}
-      <div
-        className="absolute top-0 left-0 h-full w-1/2"
-        style={{
-          transform: open ? "translateX(-132%)" : "translateX(0)",
-          transition:
-            "transform 3400ms cubic-bezier(0.22,1,0.36,1), clip-path 3400ms cubic-bezier(0.22,1,0.36,1)",
-          clipPath: open
-            ? "polygon(0 0, 100% 0, 88% 28%, 74% 58%, 56% 100%, 0 100%)"
-            : "polygon(0 0, 100% 0, 100% 28%, 100% 58%, 100% 100%, 0 100%)",
-          background:
-            "linear-gradient(to right, #f6eaea 0%, #efdede 22%, #e8d4d4 42%, #f4e7e7 64%, #ead9d9 82%, #f8eeee 100%)",
-        }}
-      />
-
-      {/* RIGHT */}
-      <div
-        className="absolute top-0 right-0 h-full w-1/2"
-        style={{
-          transform: open ? "translateX(132%)" : "translateX(0)",
-          transition:
-            "transform 3400ms cubic-bezier(0.22,1,0.36,1), clip-path 3400ms cubic-bezier(0.22,1,0.36,1)",
-          clipPath: open
-            ? "polygon(0 0, 100% 0, 100% 100%, 44% 100%, 26% 58%, 12% 28%)"
-            : "polygon(0 0, 100% 0, 100% 100%, 0 100%, 0 58%, 0 28%)",
-          background:
-            "linear-gradient(to left, #f6eaea 0%, #efdede 22%, #e8d4d4 42%, #f4e7e7 64%, #ead9d9 82%, #f8eeee 100%)",
-        }}
-      />
-    </div>
   );
 }
