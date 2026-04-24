@@ -81,7 +81,9 @@ export function Contact() {
     >
       <img
         src="images/contact-title.svg"
-        className="absolute top-23 z-10"
+        className={`absolute top-23 z-10 ${
+          show ? "animate-fade-in-soft" : "opacity-0"
+        }`}
         alt="Contact"
       />
 
@@ -89,7 +91,7 @@ export function Contact() {
         <img
           src="images/contact-form.svg"
           className={`absolute inset-0 h-full w-full ${
-            show ? "animate-crumple" : "opacity-0"
+            show ? "animate-unfold" : "opacity-0"
           }`}
           alt=""
         />
@@ -104,14 +106,22 @@ export function Contact() {
             name="email"
             required
             placeholder="Email"
-            className="bg-transparent text-white outline-none placeholder-white"
+            className={`bg-transparent text-white outline-none placeholder-white ${
+              show
+                ? "opacity-0 animate-fade-up-soft [animation-delay:0.6s]"
+                : "opacity-0"
+            }`}
           />
 
           <textarea
             name="message"
             required
             placeholder="Message"
-            className="h-24 resize-none bg-transparent text-white outline-none placeholder-white"
+            className={`h-24 resize-none bg-transparent text-white outline-none placeholder-white ${
+              show
+                ? "opacity-0 animate-fade-up-soft [animation-delay:0.8s]"
+                : "opacity-0"
+            }`}
           />
         </form>
 
@@ -120,6 +130,10 @@ export function Contact() {
           form="contact-form"
           disabled={loading}
           className={`absolute right-[80px] bottom-[220px] z-20 transition ${
+            show
+              ? "opacity-0 animate-fade-up-soft [animation-delay:1s]"
+              : "opacity-0"
+          } ${
             loading
               ? "cursor-not-allowed opacity-50"
               : "hover:rotate-10 hover:scale-120"
@@ -139,7 +153,11 @@ export function Contact() {
         href="https://www.facebook.com/royaleatelierph"
         target="_blank"
         rel="noreferrer"
-        className="absolute bottom-5 z-10 font-citadel text-[50px] text-pink-500 underline transition hover:scale-110 hover:text-white hover:no-underline"
+        className={`absolute bottom-5 z-10 font-citadel text-[50px] text-pink-500 underline transition hover:scale-110 hover:text-white hover:no-underline ${
+          show
+            ? "opacity-0 animate-fade-in-soft [animation-delay:1.2s]"
+            : "opacity-0"
+        }`}
       >
         facebook page
       </a>
