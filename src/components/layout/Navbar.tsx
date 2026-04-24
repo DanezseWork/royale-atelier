@@ -26,7 +26,7 @@ export function Navbar() {
       <img
         className={`pointer-events-none absolute left-0 w-full scale-x-[-1] transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] ${
           loaded
-            ? "-top-25 lg:-top-60 opacity-100"
+            ? "-top-100 md:-top-25 lg:-top-60 opacity-100"
             : "-top-60 lg:-top-120 opacity-0"
         }`}
         src="/images/hero-pattern.svg"
