@@ -13,7 +13,7 @@ export function Services() {
 
       const rect = sectionRef.current.getBoundingClientRect();
 
-      if (rect.top <= 200) {
+      if (rect.top <= 300) {
         setOpen(true);
       }
     };
